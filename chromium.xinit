@@ -44,7 +44,8 @@ CHROME_VERSION=$(dpkg -s chromium-browser | grep "Version: " | sed -e 's/Version
 CHROME_ARGS="   --no-first-run --kiosk $TOUCHUI_ARGS $TOUCHUI_DEBUG
                 --dns-prefetch-disable --disable-sync-preferences --disk-cache-size=1048576
                 --disable-java --disable-plugins --disable-extensions --disable-infobars
-                --user-agent='TouchUI (X11, Chrome $CHROME_VERSION) (P:$PORT)'
+                --touch-events=disabled
+                --user-agent='TouchUI (X11, Chrome $CHROME_VERSION) (P:80)'
                 --start-maximized --window-position=0,0
                 $(dirname "$0")/load-screen/startup.html"
 

@@ -31,14 +31,16 @@
 	content.onload = function() {
 		setTimeout(function() {
 			if (!hasPostMessage) {
-				setMsg("OctoPrint loaded without TouchUI", "Tap to retry", "error");
+				//setMsg("OctoPrint loaded without TouchUI", "Tap to retry", "error");
+				setMsg("", "", "");
 			}
 		}, 100);
 	}
 
 	document.addEventListener("click", function() {
 		if (document.body.className.indexOf("error") !== -1) {
-			setMsg("Connecting to TouchUI", "", "");
+			// setMsg("Connecting to TouchUI", "", "");
+			setMsg("", "", "");
 			
 			pass = 0;
 			++retry;
@@ -54,10 +56,12 @@
 
 		switch(event.data) {
 			case 'loading':
-				setMsg("Loading TouchUI", "", "");
+				//setMsg("Loading TouchUI", "", "");
+				setMsg("", "", "");
 				
 				checkTimeout = setTimeout(function() {
-					setMsg("Startup failed..", "Tap to retry", "error");
+					//setMsg("Startup failed..", "Tap to retry", "error");
+					setMsg("", "", "");
 				}, 60000); // Wait 1 minutes, if failed give error
 				break;
 				
@@ -95,7 +99,8 @@
 	}, false);
 
 	function reqListener () {
-		setMsg("Loading OctoPrint", "", "");
+		//setMsg("Loading OctoPrint", "", "");
+		setMsg("", "", "");
 		content.setAttribute("src", prefix);
 	}
 
@@ -105,6 +110,7 @@
 
 		if(pass >= 30) {
 			setMsg("Connecting to TouchUI failed..", "", "error");
+			setMsg("", "", "");
 			return;
 		}
 
