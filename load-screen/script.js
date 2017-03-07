@@ -31,16 +31,16 @@
 	content.onload = function() {
 		setTimeout(function() {
 			if (!hasPostMessage) {
-				//setMsg("OctoPrint loaded without TouchUI", "Tap to retry", "error");
-				setMsg("", "", "");
+				setMsg("Arayüz yüklenmedi", "Tekrar denemek için tıklayın", "error");
+
 			}
 		}, 100);
 	}
 
 	document.addEventListener("click", function() {
 		if (document.body.className.indexOf("error") !== -1) {
-			// setMsg("Connecting to TouchUI", "", "");
-			setMsg("", "", "");
+			setMsg("Arayüze bağlanılıyor", "", "");
+
 			
 			pass = 0;
 			++retry;
@@ -56,12 +56,12 @@
 
 		switch(event.data) {
 			case 'loading':
-				//setMsg("Loading TouchUI", "", "");
+				setMsg("Arayüz yükleniyor", "", "");
 				setMsg("", "", "");
 				
 				checkTimeout = setTimeout(function() {
-					//setMsg("Startup failed..", "Tap to retry", "error");
-					setMsg("", "", "");
+					setMsg("Arayüz başlatılamadı..", "Tekrar denemek için tıklayın", "error");
+
 				}, 60000); // Wait 1 minutes, if failed give error
 				break;
 				
@@ -69,7 +69,7 @@
 				// version check by number
 				if(!isNaN(event.data)) {
 					if (parseFloat(event.data) > version) {
-						setMsg("Update your bootloader!", "Read the wiki &amp; Tap to proceed", "info");
+						setMsg("Önyükleyici güncellenmeli!", "Lütfen üreticiyle bağlantı kurun", "info");
 						return;
 						
 					//TouchUI is ready and has same version
@@ -86,7 +86,7 @@
 					
 					if(msg !== true) { // if true this is not an error
 						clearTimeout(checkTimeout);
-						setMsg("Startup failed, tap to retry", ((retry > 0) ? msg : ""), "error");
+						setMsg("Arayüz yüklenemedi, tekrar denemek için tıklayın", ((retry > 0) ? msg : ""), "error");
 					} else { // if true this is a customization
 
 						localStorage["mainColor"] = event.data[1];
@@ -99,8 +99,8 @@
 	}, false);
 
 	function reqListener () {
-		//setMsg("Loading OctoPrint", "", "");
-		setMsg("", "", "");
+		setMsg("Alt sistem yükleniyor", "", "");
+
 		content.setAttribute("src", prefix);
 	}
 
@@ -109,8 +109,8 @@
 		//console.log("Pass: " + pass);
 
 		if(pass >= 30) {
-			setMsg("Connecting to TouchUI failed..", "", "error");
-			setMsg("", "", "");
+			setMsg("Arayüze bağlanılamadı..", "", "error");
+
 			return;
 		}
 
@@ -126,7 +126,7 @@
 		setTimeout(processRequest, 3000);
 		
 		if(pass > 0) {
-			progress.innerHTML = "<span id=\"badge\">" + pass + "</span> Connecting to TouchUI";
+			progress.innerHTML = "<span id=\"badge\">" + pass + "</span> Arayüze bağlanılıyor";
 		}
 	};
 
