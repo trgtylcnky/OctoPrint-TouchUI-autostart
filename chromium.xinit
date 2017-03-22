@@ -54,5 +54,4 @@ CHROME_ARGS="   --no-first-run --kiosk $TOUCHUI_ARGS $TOUCHUI_DEBUG
 # Start window manager, unclutter to remove cursor and start chromium as specific user				
 matchbox-window-manager &
 unclutter -idle 0.1 &
-wpa_gui &&
 su $TOUCHUI_USER -c "chromium-browser $(echo $CHROME_ARGS|tr -d '\n')"
