@@ -14,8 +14,8 @@
 	var version = 1;
 	
 	var setMsg = function(title, subtitle, className) {
-		progress.innerHTML = title;
-		error.innerHTML = subtitle;
+		progress.innerHTML = "";
+		error.innerHTML = "";
 		document.body.className = className;
 	}
 	
