@@ -33,7 +33,7 @@ body.hide #content {
 }
 
 #content {
-	visibility: hidden;
+	visibility: collapse;
 	position: absolute; 
 	border: 0 none;
 	width: 100%; 
@@ -44,7 +44,7 @@ body.hide #content {
 }
 
 #progress {
-	visibility:hidden;
+	visibility:collapse;
 	margin: 10px 0 0;
 	font-family: monospace;
 	font-weight: bold;
@@ -52,7 +52,7 @@ body.hide #content {
 	color: #00B0FF;
 }
 #progress span {
-	visibility: hidden;
+	visibility: collapse;
 	padding: 3px 0;
 	width: 19px;
 	display: inline-block;
@@ -68,7 +68,7 @@ body.hide #content {
 }
 
 #error {
-	visibility: hidden;
+	visibility: collapse;
 	margin: 5px 0 0;
 	font-family: monospace;
 	font-size: 12px;
@@ -84,7 +84,7 @@ body.hide #content {
 
 .error #progress,
 .error #error {
-	visibility: hidden;
+	visibility: collapse;
 	color: #ff0000;
 }
 
